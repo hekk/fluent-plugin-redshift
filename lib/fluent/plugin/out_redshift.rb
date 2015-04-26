@@ -226,6 +226,7 @@ class RedshiftOutput < BufferedOutput
 
   def json_to_hash(json_text)
     return nil if json_text.to_s.empty?
+    return json_text if json_text.is_a?(Hash)
 
     JSON.parse(json_text)
   rescue => e
